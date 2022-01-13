@@ -1,56 +1,22 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { setColor } from "../../reducers/carReducer";
+import { data } from "./../../data/data";
 
 const Colors = () => {
-  const colorsExamples = [
-    " #000000",
-    "#0d4671",
-    "#63803a",
-    "#841210",
-    "#a09e9f",
-  ];
+  const dispatch = useDispatch();
 
   console.log([..."#a09e9f"].slice(1).join(""));
   return (
-    <ColorsContainer class="colors">
-      {colorsExamples.map((color, id) => (
+    <ColorsContainer>
+      {data.colors.map((color, id) => (
         <ColorsCircle
-          class="color"
+          key={id}
+          onClick={() => dispatch(setColor(color))}
           style={{ backgroundColor: color }}
-          data-hex={[...color].slice(1).join("")}
         ></ColorsCircle>
       ))}
-      {/* <ColorsCircle
-        class="color"
-        style={{ backgroundColor: " #000000" }}
-        data-hex="000000"
-      ></ColorsCircle>
-      <ColorsCircle
-        class="color"
-        style={{ backgroundColor: "#0d4671" }}
-        data-hex="0d4671"
-      ></ColorsCircle>
-      <ColorsCircle
-        class="color"
-        style={{ backgroundColor: "#63803a" }}
-        data-hex="63803a"
-      ></ColorsCircle>
-      <ColorsCircle
-        class="color"
-        style={{ backgroundColor: "#841210" }}
-        data-hex="841210"
-      ></ColorsCircle>
-      <ColorsCircle
-        class="color"
-        style={{ backgroundColor: "#a09e9f" }}
-        data-hex="none"
-      ></ColorsCircle> */}
-      <input
-        id="customColour"
-        class="color jscolor"
-        onchange="update(this.jscolor)"
-        data-hex=""
-      />
     </ColorsContainer>
   );
 };

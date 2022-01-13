@@ -1,18 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import bugatti from "./../assets/pngegg.png";
 
 const CarCard = () => {
   const color = useSelector((state) => state.car.color);
   return (
-    <Container>
-      <img
-        alt="car"
-        src={
-          `https://ddools.imgix.net/cars/base.png?w=600&mark-align=center,middle&mark=https%3A%2F%2Fddools.imgix.net%2Fcars%2Fpaint.png%3Fw%3D600%26bri%3D-18%26con%3D26%26monochrome%3D000000` +
-          color
-        }
-      ></img>
+    <Container color={color}>
+      <CardContainer></CardContainer>
     </Container>
   );
 };
@@ -20,6 +15,14 @@ const CarCard = () => {
 export default CarCard;
 const Container = styled.div`
   margin: auto;
-
+  width: 100%;
+  height: 100%;
+  background-color: ${(props) => props.color};
   width: 50vw;
+`;
+const CardContainer = styled.div`
+  margin: 10rem auto;
+  width: 50%;
+  height: 60%;
+  background-color: gray;
 `;

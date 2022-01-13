@@ -1,8 +1,5 @@
-
-import "./App.css";
-import MainPage from "./pages/MainPage";
-import GlobalStyle from "./styles/GlobalStyles";
 import { createServer } from "miragejs";
+
 createServer({
   routes() {
     this.get("/api/cars", () => {
@@ -46,14 +43,3 @@ createServer({
     });
   },
 });
-
-function App() {
-  return (
-    <div>
-      <GlobalStyle />
-      <MainPage />
-    </div>
-  );
-}
-
-export default App;

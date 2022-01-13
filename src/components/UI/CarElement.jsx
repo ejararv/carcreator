@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const CarElement = ({ children, ...props }) => {
-  return <Element> {children}</Element>;
+  return <Element {...props}> {children}</Element>;
 };
 
 export default CarElement;
@@ -24,5 +24,8 @@ const Element = styled.li`
   cursor: default;
   &:hover {
     background: #808080;
+  }
+  &:after {
+    background: #308080;
   }
 `;
