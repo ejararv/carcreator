@@ -1,29 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { setBudget } from "../reducers/carReducer";
 import CarElement from "./UI/CarElement";
 
-const CarConfigurator = ({
-  carElements,
-  carElement,
-  setElement,
-  title,
-  id,
-  ...props
-}) => {
-  const [isClicked, setIsClicked] = useState(false);
+const CarConfigurator = ({ carElements, setElement,elementCost, title, id }) => {
+  const dispatch = useDispatch()
   return (
     <CarConfiguratorContainer>
       <Title>{title}</Title>
       <Configurations>
-        {carElements.length > 1 ? (
+        {Array.isArray(carElements, id) ? (
           carElements.map((carElement) => (
             <CarElement
-              clicked={isClicked}
               key={id}
               value={carElement}
-              onClick={() => {
+              setElement={() => {
                 setElement(carElement);
-                setIsClicked(!isClicked);
+                dispatch(setBudget());
               }}
             >
               {/* I don’t recommend using indexes for keys if the order of items may
@@ -33,12 +27,10 @@ const CarConfigurator = ({
           ))
         ) : (
           <CarElement
-            clicked={isClicked}
-            key={id}
+            key={Date.now()}
             value={carElements}
-            onClick={() => {
+            setElement={() => {
               setElement(carElements);
-              setIsClicked(!isClicked);
             }}
           >
             {/* I don’t recommend using indexes for keys if the order of items may

@@ -2,15 +2,14 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { setColor } from "../../reducers/carReducer";
-import { data } from "./../../data/data";
 
-const Colors = () => {
+
+const Colors = ({ colors }) => {
   const dispatch = useDispatch();
 
-  console.log([..."#a09e9f"].slice(1).join(""));
   return (
     <ColorsContainer>
-      {data.colors.map((color, id) => (
+      {colors.map((color, id) => (
         <ColorsCircle
           key={id}
           onClick={() => dispatch(setColor(color))}

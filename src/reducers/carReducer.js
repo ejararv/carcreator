@@ -5,9 +5,10 @@ const SET_PRICE = "SET_PRICE";
 const SET_CURRENT_CAR = "SET_CURRENT_CAR";
 const SET_CAR_ENGINE = "SET_CAR_ENGINE";
 const SET_CARS = "SET_CARS";
+const SET_CAR_GEARBOX = "SET_CAR_GEARBOX";
 
 const defaultState = {
-  cars: {
+  data: {
     user: {
       money: 1000,
     },
@@ -15,42 +16,64 @@ const defaultState = {
       {
         id: 1,
         modelName: "PRO RS3",
-        engines: ["5.2L 532BHP", "4.2L 443BHP", "3.6L 374BHP", "2.0L 116BHP"],
+        engines: [
+          { modelName: "5.2L 532BHP", cost: 5600 },
+          { modelName: "4.2L 443BHP", cost: 4000 },
+          { modelName: "3.6L 374BHP", cost: 2500 },
+          { modelName: "2.0L 116BHP", cost: 1500 },
+        ],
         automaticGearbox: "Yes",
+        colors: ["#000000", "#0d4671", "#63803a", "#841210", "#a09e9f"],
       },
       {
         id: 2,
         modelName: "UBER RS2",
-        engines: ["4.2L 443BHP", "3.6L 374BHP", "2.0L 116BHP"],
+        engines: [
+          { modelName: "4.2L 443BHP", cost: 4000 },
+          { modelName: "3.6L 374BHP", cost: 2500 },
+          { modelName: "2.0L 116BHP", cost: 1500 },
+        ],
         automaticGearbox: "Yes",
+        colors: ["#000000", "#0d4671", "#63803a", "#a09e9f"],
       },
       {
         id: 3,
         modelName: "STANDART",
-        engines: ["3.6L 374BHP", "2.0L 116BHP"],
+        engines: [
+          { modelName: "3.6L 374BHP", cost: 2500 },
+          { modelName: "2.0L 116BHP", cost: 1500 },
+        ],
         automaticGearbox: "No",
+        colors: ["#000000", "#63803a", "#a09e9f"],
       },
       {
         id: 4,
         modelName: "WK",
-        engines: ["2.0L 116BHP"],
+        engines: [{ modelName: "2.0L 116BHP", cost: 1500 }],
         automaticGearbox: "No",
+        colors: ["#000000", "#a09e9f"],
       },
     ],
-    colors: [" #000000", "#0d4671", "#63803a", "#841210", "#a09e9f"],
   },
   currentCar: {},
+  myCars: [],
   carModel: "",
-  
-  budget: 1000,
+  carEngine: "",
+  carGearBox: "",
+  budget: 0,
   color: "#000000",
-  price: 0,
+  carPrice: 0,
 };
 
-export default function fileReducer(state = defaultState, action) {
+export default function carReducer(state = defaultState, action) {
   switch (action.type) {
     case SET_CAR_MODEL:
-      return { ...state, carModel: action.payload };
+      return {
+        ...state,
+        carModel: action.payload,
+        carEngine: "",
+        carGearBox: "",
+      };
     case SET_CAR_COLOR:
       return { ...state, color: action.payload };
     case SET_BUDGET:
@@ -64,7 +87,12 @@ export default function fileReducer(state = defaultState, action) {
     case SET_CAR_ENGINE:
       return {
         ...state,
-        currentCar: [...state.currentCar.engine, action.payload],
+        carEngine: action.payload,
+      };
+    case SET_CAR_GEARBOX:
+      return {
+        ...state,
+        carGearBox: action.payload,
       };
 
     default:
@@ -101,4 +129,9 @@ export const setCars = (cars) => ({
 export const setCarEngine = (engine) => ({
   type: SET_CAR_ENGINE,
   payload: engine,
+});
+
+export const setCarGearBox = (gearBox) => ({
+  type: SET_CAR_GEARBOX,
+  payload: gearBox,
 });
