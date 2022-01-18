@@ -11,8 +11,9 @@ import {
   setCurrentCar,
   setModel,
 } from "../reducers/carReducer";
-import HamsterLoader from "../components/UI/hamsterLoader/HamsterLoader";
 import CarCard from "../components/UI/CarCard";
+import MuscleCar from "../components/3dModel/cars/MuscleCar";
+import bg from "./../assets/background.jpg";
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ const MainPage = () => {
         setElement={(value) => {
           dispatch(setCarEngine(value));
         }}
-        carElements={currCar[0].engines.map((e) => e)}
+        carElements={currCar[0].engines.map((e) => e.modelName)}
         elementCost={currCar[0].engines.map((e) => e.cost)}
       />
     );
@@ -78,16 +79,9 @@ const MainPage = () => {
       />
     );
   };
-  const Colorses = () => {
-    return <Colors colors={currCar[0].colors} />;
-  };
 
   if (loader) {
-    return (
-      <LoaderContainer>
-        <HamsterLoader />
-      </LoaderContainer>
-    );
+    return <LoaderContainer>{/* loader */}</LoaderContainer>;
   }
 
   return (
@@ -96,10 +90,10 @@ const MainPage = () => {
         <Models />
         {currCar.length && <Engines />}
         {currCar.length && <GearBoxes />}
-        {currCar.length && <Colorses />}
+        {currCar.length && <Colors />}
       </Configurations>
 
-      <CarCard />
+      <CarCard model={<MuscleCar />} />
     </Container>
   );
 };
@@ -107,10 +101,14 @@ const MainPage = () => {
 export default MainPage;
 
 const Container = styled.div`
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   display: flex;
+  overflow: hidden;
   align-items: center;
-  justify-content: center;
+  background: url(${bg});
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
 
 const Configurations = styled.div`

@@ -60,6 +60,7 @@ const defaultState = {
   carModel: "",
   carEngine: "",
   carGearBox: "",
+  
   budget: 0,
   color: "#000000",
   carPrice: 0,

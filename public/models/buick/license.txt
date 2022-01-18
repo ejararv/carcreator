@@ -1,0 +1,11 @@
+Model Information:
+* title:	1971 Buick Riviera Custom
+* source:	https://sketchfab.com/3d-models/1971-buick-riviera-custom-268d8b02b7e6424cb624ca3718b5cc27
+* author:	everhard (https://sketchfab.com/everhard)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "1971 Buick Riviera Custom" (https://sketchfab.com/3d-models/1971-buick-riviera-custom-268d8b02b7e6424cb624ca3718b5cc27) by everhard (https://sketchfab.com/everhard) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

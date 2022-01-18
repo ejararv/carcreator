@@ -1,0 +1,11 @@
+Model Information:
+* title:	Motorbike Engine
+* source:	https://sketchfab.com/3d-models/motorbike-engine-33db399c34ef4d61bd93d422b1c0c92e
+* author:	lunea (https://sketchfab.com/lunea)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Motorbike Engine" (https://sketchfab.com/3d-models/motorbike-engine-33db399c34ef4d61bd93d422b1c0c92e) by lunea (https://sketchfab.com/lunea) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
