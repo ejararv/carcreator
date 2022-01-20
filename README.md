@@ -16,7 +16,7 @@ The project was developed as a pet project.
 - Configuration selection (Engine, gearbox, color)
 - Displaying the full cost of the selected configuration, Buy button
 
-## Screenshots
+## Demonstration
 
 ![Demonstration](scene.gif)
 
