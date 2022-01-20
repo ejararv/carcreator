@@ -9,7 +9,7 @@ const Colors = () => {
 
   return (
     <>
-      <HexColorPicker  color={color} onChange={(e) => dispatch(setColor(e))} />
+      <HexColorPicker color={color} onChange={(e) => dispatch(setColor(e))} />
     </>
   );
 };

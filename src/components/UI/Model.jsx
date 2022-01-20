@@ -47,10 +47,7 @@ const ProgressBar = styled.div`
 
   margin: 3px;
 `;
-const UploadBar = styled.div`
-  background-color: grey;
-  border-radius: 6px;
-`;
+
 const Percent = styled.h6`
   color: #fff;
   width: 2rem;

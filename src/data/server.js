@@ -3,7 +3,7 @@ import { createServer } from "miragejs";
 createServer({
   routes() {
     this.get("/api/cars", () => {
-      return   {
+      return {
         user: {
           money: 1000,
         },
@@ -49,7 +49,7 @@ createServer({
             automaticGearbox: "No",
           },
         ],
-      }
+      };
     });
   },
 });

@@ -30,7 +30,7 @@ export const postCar = (car) => {
       });
       alert(response.data.message);
     } catch (error) {
-      // alert(error?.response?.data?.message); 
+      // alert(error?.response?.data?.message);
       alert("You bought " + car.carModel);
     }
   };
