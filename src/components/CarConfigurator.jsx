@@ -1,75 +1,32 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { setBudget } from "../reducers/carReducer";
 import CarElement from "./UI/CarElement";
 
-const CarConfigurator = ({
-  carElements,
-  setElement,
-  elementCost,
-  title,
-  id,
-}) => {
-  const dispatch = useDispatch();
+const CarConfigurator = ({ carElements, setElement, title }) => {
   return (
     <CarConfiguratorContainer>
       <Title>{title}</Title>
       <Configurations>
-        {Array.isArray(carElements, id) ? (
+        {Array.isArray(carElements) ? (
           carElements.map((carElement) => (
             <CarElement
-              key={id}
+              key={Math.random() * 100}
               value={carElement}
               setElement={() => {
                 setElement(carElement);
-                dispatch(setBudget());
               }}
             >
-              {/* I don’t recommend using indexes for keys if the order of items may
-              change */}
               {carElement}
             </CarElement>
           ))
         ) : (
           <CarElement
-            key={Date.now()}
+            key={Math.floor(Math.random() * 100)}
             value={carElements}
             setElement={() => {
               setElement(carElements);
             }}
           >
-            {/* I don’t recommend using indexes for keys if the order of items may
-              change */}
-            {carElements}
-          </CarElement>
-        )}
-
-        {Array.isArray(elementCost, id) && elementCost ? (
-          elementCost.map((e) => (
-            <CarElement
-              key={id}
-              value={e}
-              setElement={() => {
-                setElement(e);
-                dispatch(setBudget());
-              }}
-            >
-              {/* I don’t recommend using indexes for keys if the order of items may
-              change */}
-              {e}
-            </CarElement>
-          ))
-        ) : (
-          <CarElement
-            key={Date.now()}
-            value={elementCost}
-            setElement={() => {
-              setElement(elementCost);
-            }}
-          >
-            {/* I don’t recommend using indexes for keys if the order of items may
-              change */}
             {carElements}
           </CarElement>
         )}
@@ -80,7 +37,9 @@ const CarConfigurator = ({
 
 export default CarConfigurator;
 const CarConfiguratorContainer = styled.div``;
-const Title = styled.h1``;
+const Title = styled.h1`
+  color: aliceblue;
+`;
 
 const Configurations = styled.div`
   display: flex;

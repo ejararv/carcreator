@@ -9,13 +9,12 @@ title: American Muscle '71 - Low poly model
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
-
 export default function MuscleCar(props) {
   const group = useRef();
   const { nodes, materials } = useGLTF("/models/muscleCar/scene.gltf");
 
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...props} scale={1.8} dispose={null}>
       <group position={[0, -1.33, 0.1]} rotation={[1.57, 0, 0]}>
         <group rotation={[-Math.PI, 0, 0]} scale={0.03}>
           <group position={[19.39, -3.38, 29.65]} scale={2.65}>

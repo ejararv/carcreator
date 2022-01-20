@@ -1,48 +1,43 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import Fiat from "../3dModel/cars/Fiat";
+import Gmc from "../3dModel/cars/Gmc";
+import MuscleCar from "../3dModel/cars/MuscleCar";
+import Porsche from "../3dModel/cars/Porsche";
 import Model from "./Model";
 
-const CarCard = ({ model }) => {
+const CarCard = () => {
   const color = useSelector((state) => state.car.color);
-  const carState = useSelector((state) => state.car);
+  const carModel = useSelector((state) => state.car.carModel);
 
-  return (
-    <Container color={color}>
-      <BudgetContainer></BudgetContainer>
-      <CardContainer>
-        <Model>{model}</Model>
+  const CurrentCarModel = () => {
+    return carModel === "Fiat" ? (
+      <Model zIndex={10}>
+        <Fiat customColor={color} />
+      </Model>
+    ) : carModel === "GMC" ? (
+      <Model zIndex={10}>
+        <Gmc customColor={color} />
+      </Model>
+    ) : carModel === "Porsche 911" ? (
+      <Model zIndex={10}>
+        <Porsche customColor={color} />
+      </Model>
+    ) : carModel === "MuscleCar" ? (
+      <Model zIndex={10}>
+        <MuscleCar customColor={color} />
+      </Model>
+    ) : null;
+  };
 
-        <Element>{carState.carModel}</Element>
-        <Element>{carState.carEngine}</Element>
-        <Element>{carState.carGearBox}</Element>
-      </CardContainer>
-    </Container>
-  );
+  return <Container>{CurrentCarModel()}</Container>;
 };
 
 export default CarCard;
 const Container = styled.div`
-  margin: auto;
-  width: 100%;
-  height: 100%;
-
-  width: 100vw;
-`;
-const CardContainer = styled.div`
-  width: 100%;
+  position: fixed;
   height: 100vh;
-`;
-const Element = styled.div``;
-const BudgetContainer = styled.div`
-  display: flex;
-`;
-
-const BudgetElement = styled.li`
-  list-style: none;
-`;
-const CarModel = styled.div`
-  width: 80vw;
-  height: 80vh;
-  margin: auto;
+  width: 100vw;
+  z-index: -1;
 `;

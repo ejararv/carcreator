@@ -15,15 +15,19 @@ const CarElement = ({ children, setElement, color, ...props }) => {
   );
 };
 const Element = styled.li`
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
   list-style: none;
   margin: 2px;
   position: relative;
   padding: 0.3vh 0.5vw;
-  background: #808080;
   border-radius: 0.5rem;
   padding: 1rem;
-  border: none;
-  color: #3c354e;
+  color: aliceblue;
   font-size: 1rem;
   font-weight: bold;
   cursor: default;

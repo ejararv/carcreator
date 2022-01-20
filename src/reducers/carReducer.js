@@ -6,6 +6,7 @@ const SET_CURRENT_CAR = "SET_CURRENT_CAR";
 const SET_CAR_ENGINE = "SET_CAR_ENGINE";
 const SET_CARS = "SET_CARS";
 const SET_CAR_GEARBOX = "SET_CAR_GEARBOX";
+const BUY_CAR = "BUY_CAR";
 
 const defaultState = {
   data: {
@@ -15,7 +16,8 @@ const defaultState = {
     cars: [
       {
         id: 1,
-        modelName: "PRO RS3",
+        modelName: "MuscleCar",
+        cost: 6000,
         engines: [
           { modelName: "5.2L 532BHP", cost: 5600 },
           { modelName: "4.2L 443BHP", cost: 4000 },
@@ -23,35 +25,34 @@ const defaultState = {
           { modelName: "2.0L 116BHP", cost: 1500 },
         ],
         automaticGearbox: "Yes",
-        colors: ["#000000", "#0d4671", "#63803a", "#841210", "#a09e9f"],
       },
       {
         id: 2,
-        modelName: "UBER RS2",
+        modelName: "Porsche 911",
+        cost: 5000,
         engines: [
           { modelName: "4.2L 443BHP", cost: 4000 },
           { modelName: "3.6L 374BHP", cost: 2500 },
           { modelName: "2.0L 116BHP", cost: 1500 },
         ],
         automaticGearbox: "Yes",
-        colors: ["#000000", "#0d4671", "#63803a", "#a09e9f"],
       },
       {
         id: 3,
-        modelName: "STANDART",
+        modelName: "GMC",
+        cost: 3000,
         engines: [
           { modelName: "3.6L 374BHP", cost: 2500 },
           { modelName: "2.0L 116BHP", cost: 1500 },
         ],
         automaticGearbox: "No",
-        colors: ["#000000", "#63803a", "#a09e9f"],
       },
       {
         id: 4,
-        modelName: "WK",
+        cost: 1000,
+        modelName: "Fiat",
         engines: [{ modelName: "2.0L 116BHP", cost: 1500 }],
         automaticGearbox: "No",
-        colors: ["#000000", "#a09e9f"],
       },
     ],
   },
@@ -60,8 +61,7 @@ const defaultState = {
   carModel: "",
   carEngine: "",
   carGearBox: "",
-  
-  budget: 0,
+  budget: 1000,
   color: "#000000",
   carPrice: 0,
 };
@@ -80,7 +80,7 @@ export default function carReducer(state = defaultState, action) {
     case SET_BUDGET:
       return { ...state, budget: action.payload };
     case SET_PRICE:
-      return { ...state, price: action.payload };
+      return { ...state, carPrice: action.payload };
     case SET_CARS:
       return { ...state, cars: action.payload };
     case SET_CURRENT_CAR:
@@ -94,6 +94,12 @@ export default function carReducer(state = defaultState, action) {
       return {
         ...state,
         carGearBox: action.payload,
+      };
+
+    case BUY_CAR:
+      return {
+        ...state,
+        myCars: [...state.myCars, action.payload],
       };
 
     default:
@@ -135,4 +141,8 @@ export const setCarEngine = (engine) => ({
 export const setCarGearBox = (gearBox) => ({
   type: SET_CAR_GEARBOX,
   payload: gearBox,
+});
+export const buyCar = (car) => ({
+  type: BUY_CAR,
+  payload: car,
 });
